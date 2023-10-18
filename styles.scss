@@ -1,0 +1,60 @@
+$brightOrange: hsl(31, 77%, 52%);
+$darkCyan: hsl(184, 100%, 22%);
+$veryDarkCyan: hsl(179, 100%, 13%);
+$transparentWhite: hsla(0, 0%, 100%, 0.75);
+$veryLightGray: hsl(0, 0%, 95%);
+
+$sedanIcon: url('./images/icon-sedans.svg');
+$luxuryIcon: url('./images/icon-luxury.svg');
+$suvIcon: url('./images/icon-suvs.svg');
+
+@mixin car-icon {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+main {
+    max-width: 720px;
+    outline: 1px solid red;
+    column-count: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.column-title.first::before,
+.column-title.second::before,
+.column-title.third::before {
+    @include car-icon;
+}
+
+.column-title.first::before {
+    background-image: $sedanIcon;
+}
+
+.column-title.second::before {
+    background-image: $suvIcon;
+}
+
+.column-title.third::before {
+    background-image: $luxuryIcon;
+}
