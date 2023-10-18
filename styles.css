@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+main {
+  max-width: 720px;
+  outline: 1px solid red;
+  -moz-column-count: 3;
+       column-count: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.column-title.first::before,
+.column-title.second::before,
+.column-title.third::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.column-title.first::before {
+  background-image: url("./images/icon-sedans.svg");
+}
+
+.column-title.second::before {
+  background-image: url("./images/icon-suvs.svg");
+}
+
+.column-title.third::before {
+  background-image: url("./images/icon-luxury.svg");
+}
