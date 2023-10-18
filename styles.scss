@@ -15,6 +15,19 @@ $suvIcon: url('./images/icon-suvs.svg');
     height: 40px;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 1em;
+}
+
+@mixin column-body {
+    color: $transparentWhite;
+}
+
+@mixin link-styles {
+    background: $veryLightGray;
+    text-decoration: none;
+    padding: 1em 2em;
+    border-radius: 25px;
+    text-transform: capitalize;
 }
 
 *,
@@ -32,29 +45,98 @@ body {
 }
 
 main {
-    max-width: 720px;
-    outline: 1px solid red;
+    width: 900px;
     column-count: 3;
+    column-gap: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 10px;
 }
 
-.column-title.first::before,
-.column-title.second::before,
-.column-title.third::before {
-    @include car-icon;
+section {
+    @include column-body;
+    padding: 3em 3.1em 4em 3em;
+    .column-description {
+        line-height: 1.6em;
+        padding-bottom: 6em;
+    }
+    a {
+        @include link-styles;
+    }
 }
 
-.column-title.first::before {
-    background-image: $sedanIcon;
+section:first-of-type {
+    background: $brightOrange;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    a {
+        color: $brightOrange;
+    }
 }
 
-.column-title.second::before {
-    background-image: $suvIcon;
+section:nth-of-type(2) {
+    background: $darkCyan;
+    a {
+        color: $darkCyan;
+    }
 }
 
-.column-title.third::before {
-    background-image: $luxuryIcon;
+section:last-of-type {
+    background: $veryDarkCyan;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    a {
+        color: $veryDarkCyan;
+    }
+}
+
+.column-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    margin: 0 0 0.75em 0;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    color: $veryLightGray;
+    &::before {
+        @include car-icon;
+    }
+    &.first::before {
+        background-image: $sedanIcon;
+    }
+    &.second::before {
+        background-image: $suvIcon;
+    }
+    &.third::before {
+        background-image: $luxuryIcon;
+    }
+}
+
+@media (max-width: 375px) {
+    main {
+        column-count: 1;
+        width: 90%;
+        top: 2%;
+        transform: translateX(-50%);
+        border-radius: initial;
+    }
+
+    section {
+        &:first-of-type {
+            border-radius: 10px 10px 0 0;
+        }
+        &:last-of-type {
+            border-radius: 0 0 10px 10px;
+        }
+        .column-description {
+            padding-bottom: 1.5em;
+        }
+    }
+
+    .column-title {
+        margin: 0 0 0.5em 0;
+        &::before {
+            margin-bottom: 0.75em;
+        }
+    }
 }
