@@ -13,35 +13,107 @@ body {
 }
 
 main {
-  max-width: 720px;
-  outline: 1px solid red;
+  width: 900px;
   -moz-column-count: 3;
        column-count: 3;
+  -moz-column-gap: 0;
+       column-gap: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 10px;
 }
 
-.column-title.first::before,
-.column-title.second::before,
-.column-title.third::before {
+section {
+  color: hsla(0, 0%, 100%, 0.75);
+  padding: 3em 3.1em 4em 3em;
+}
+section .column-description {
+  line-height: 1.6em;
+  padding-bottom: 6em;
+}
+section a {
+  background: hsl(0, 0%, 95%);
+  text-decoration: none;
+  padding: 1em 2em;
+  border-radius: 25px;
+  text-transform: capitalize;
+}
+
+section:first-of-type {
+  background: hsl(31, 77%, 52%);
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+section:first-of-type a {
+  color: hsl(31, 77%, 52%);
+}
+
+section:nth-of-type(2) {
+  background: hsl(184, 100%, 22%);
+}
+section:nth-of-type(2) a {
+  color: hsl(184, 100%, 22%);
+}
+
+section:last-of-type {
+  background: hsl(179, 100%, 13%);
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+section:last-of-type a {
+  color: hsl(179, 100%, 13%);
+}
+
+.column-title {
+  font-family: "Big Shoulders Display", sans-serif;
+  margin: 0 0 0.75em 0;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  color: hsl(0, 0%, 95%);
+}
+.column-title::before {
   content: "";
   display: block;
   width: 64px;
   height: 40px;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 1em;
 }
-
 .column-title.first::before {
   background-image: url("./images/icon-sedans.svg");
 }
-
 .column-title.second::before {
   background-image: url("./images/icon-suvs.svg");
 }
-
 .column-title.third::before {
   background-image: url("./images/icon-luxury.svg");
+}
+
+@media (max-width: 375px) {
+  main {
+    -moz-column-count: 1;
+         column-count: 1;
+    width: 90%;
+    top: 2%;
+    transform: translateX(-50%);
+    border-radius: initial;
+  }
+  section:first-of-type {
+    border-radius: 10px 10px 0 0;
+  }
+  section:last-of-type {
+    border-radius: 0 0 10px 10px;
+  }
+  section .column-description {
+    padding-bottom: 1.5em;
+  }
+  .column-title {
+    margin: 0 0 0.5em 0;
+  }
+  .column-title::before {
+    margin-bottom: 0.75em;
+  }
 }
